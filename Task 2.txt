@@ -1,0 +1,35 @@
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+# Initialize VADER Sentiment Analyzer
+analyzer = SentimentIntensityAnalyzer()
+
+# Example tweet
+tweet = "Just got the new iPhone 15! It’s amazing, love the camera! #iPhone15"
+
+# Get sentiment score
+score = analyzer.polarity_scores(tweet)
+print(score)
+ 
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from datetime import datetime
+
+# Example data (Date and Sentiment Scores)
+data = {'Date': ['2024-12-01', '2024-12-01', '2024-12-02', '2024-12-02'],
+        'Sentiment': [0.85, 0.60, -0.25, 0.30]}  # compound sentiment scores
+
+# Convert date to datetime
+df = pd.DataFrame(data)
+df['Date'] = pd.to_datetime(df['Date'])
+
+# Plot sentiment over time
+plt.figure(figsize=(10, 5))
+plt.plot(df['Date'], df['Sentiment'], marker='o', linestyle='-', color='b')
+plt.title('Sentiment Trend Over Time')
+plt.xlabel('Date')
+plt.ylabel('Sentiment Score')
+plt.grid(True)
+plt.show()
